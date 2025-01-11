@@ -17,7 +17,7 @@
 		</p>
 		<br />
 		<p>
-			This is also my home. You can look at what I can offer and if it might benefit you. You can
+			You can look at what I can offer and if it might benefit you. You can
 			check out my tools, or just stroll around and look at what else the site has to offer.
 		</p>
 	</div>
