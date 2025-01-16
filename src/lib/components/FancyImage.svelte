@@ -2,9 +2,13 @@
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
 
-	export let imgSrc: string;
+	interface Props {
+		imgSrc: string;
+	}
 
-	let canvasContainer: HTMLDivElement;
+	let { imgSrc }: Props = $props();
+
+	let canvasContainer: HTMLDivElement = $state();
 
 	let isDragging = false;
 	let previousMousePosition = { x: 0, y: 0 };
