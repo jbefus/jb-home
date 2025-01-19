@@ -1,37 +1,40 @@
-<script>
-	import ThemeToggle from './ThemeToggle.svelte';
+<script lang="ts">
+	import { page } from '$app/state';
+	type NavItem = {
+		route: string;
+		text: string;
+		children?: NavItem[];
+	};
+	const navItems: NavItem[] = [
+		{
+			route: '/about',
+			text: 'About Me',
+		},
+		{
+			route: '/work',
+			text: 'My Work',
+		},
+		{
+			route: '/todo',
+			text: 'Todo App',
+		},
+	];
 </script>
 
 <nav class="navbar justify-between">
-	<div>
-		<a href="/" class="logo">jbefus.de</a>
-		<a href="/about"> Who am I? </a>
-		<a href="/work"> My Work? </a>
-	</div>
-	<div>
-		<ThemeToggle />
+	<div class="flex w-full flex-row justify-between p-3">
+		<div>
+			{#each navItems as item}
+				<a href={item.route} class="mx-3 {item.route == page.url.pathname ? 'active' : ''}">
+					{item.text}
+				</a>
+			{/each}
+		</div>
 	</div>
 </nav>
 
-<style>
-	.navbar {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 0.5rem 1rem;
-		border-bottom: 1px solid #ccc;
-	}
-
-	.logo {
-		font-weight: bold;
-		text-decoration: none;
-	}
-
-	a {
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	a:hover {
+<style lang="postcss">
+	.active {
+		@apply font-extrabold text-blue-900 dark:text-red-200;
 	}
 </style>
