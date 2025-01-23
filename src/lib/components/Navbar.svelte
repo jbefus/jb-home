@@ -30,7 +30,10 @@
 		},
 		{
 			text: 'Tools',
-			children: [{ text: 'Tomatoes', route: '/tomatoes' }],
+			children: [
+				{ text: 'Tomatoes', route: '/tomatoes' },
+				{ text: 'Todo', route: '/todo' },
+			],
 		},
 	];
 </script>
