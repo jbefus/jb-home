@@ -26,6 +26,9 @@
 		"eslint": "^9.7.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.45.1",
+		"flowbite": "^2.5.2",
+		"flowbite-svelte": "^0.47.4",
+		"flowbite-svelte-icons": "^2.0.2",
 		"globals": "^15.0.0",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
@@ -40,6 +43,7 @@
 	},
 	"dependencies": {
 		"@inlang/paraglide-sveltekit": "^0.11.1",
+		"@supabase/supabase-js": "^2.47.16",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/three": "^0.171.0",

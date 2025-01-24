@@ -8,7 +8,7 @@
 
 	let { imgSrc }: Props = $props();
 
-	let canvasContainer: HTMLDivElement = $state();
+	let canvasContainer: HTMLDivElement | undefined = $state();
 
 	let isDragging = false;
 	let previousMousePosition = { x: 0, y: 0 };
@@ -16,12 +16,13 @@
 
 	onMount(() => {
 		// Scene setup
+		if (canvasContainer == undefined) return;
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(
 			75,
 			canvasContainer.clientWidth / canvasContainer.clientHeight,
 			0.1,
-			1000
+			1000,
 		);
 
 		// Renderer with transparent background
@@ -45,7 +46,7 @@
 			new THREE.MeshStandardMaterial({ map: imageTexture, transparent: true }), // Front
 			new THREE.MeshStandardMaterial({ map: imageTexture, transparent: true }), // Front
 			new THREE.MeshStandardMaterial({ map: imageTexture, transparent: true }), // Front
-			new THREE.MeshStandardMaterial({ map: imageTexture, transparent: true }) // Back
+			new THREE.MeshStandardMaterial({ map: imageTexture, transparent: true }), // Back
 		];
 
 		// Cube geometry
@@ -112,6 +113,7 @@
 
 		// Resize handling
 		window.addEventListener('resize', () => {
+			if (canvasContainer == undefined) return;
 			const width = canvasContainer.clientWidth;
 			const height = canvasContainer.clientHeight;
 			renderer.setSize(width, height);
@@ -127,6 +129,7 @@
 
 		// Cleanup on unmount
 		return () => {
+			if (canvasContainer == undefined) return;
 			cancelAnimationFrame(animationFrame);
 			renderer.dispose();
 			canvasContainer.removeEventListener('mousedown', onMouseDown);
